@@ -34,3 +34,16 @@ function d($value = null, $die = 1){
 
 	if($die) die();
 }
+
+// функция для преобразования результата запроса с БД в ассоциативный массив
+
+function createSmartyRsArray($rs){
+
+	if(!$rs) return false;
+	$smartyRs = [];	
+	while($row = mysqli_fetch_assoc($rs)){
+		$smartyRs[] = $row;
+	}
+	
+	return $smartyRs;
+} 

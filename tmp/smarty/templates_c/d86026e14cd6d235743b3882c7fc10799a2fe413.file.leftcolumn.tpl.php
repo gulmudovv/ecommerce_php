@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2021-11-25 22:09:08
+<?php /* Smarty version Smarty-3.1.6, created on 2021-11-27 00:42:43
          compiled from "../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:540578611619e902ce64194-23054530%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd86026e14cd6d235743b3882c7fc10799a2fe413' => 
     array (
       0 => '../views/default\\leftcolumn.tpl',
-      1 => 1637867345,
+      1 => 1637962960,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'rsCategories' => 0,
     'item' => 0,
     'itemChild' => 0,
+    'cartCntItems' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -36,7 +37,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
 
-	        <a href="#"><?php echo $_smarty_tpl->tpl_vars['item']->value['name'];?>
+	        <a href="/category/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+/"><?php echo $_smarty_tpl->tpl_vars['item']->value['name'];?>
 </a><br>
 	            <?php if (isset($_smarty_tpl->tpl_vars['item']->value['children'])){?>
                     <?php  $_smarty_tpl->tpl_vars['itemChild'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['itemChild']->_loop = false;
@@ -44,11 +46,18 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars['itemChild']->key => $_smarty_tpl->tpl_vars['itemChild']->value){
 $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
 ?>
-                        ~<a href="#"><?php echo $_smarty_tpl->tpl_vars['itemChild']->value['name'];?>
+                        &mdash;<a href="/category/<?php echo $_smarty_tpl->tpl_vars['itemChild']->value['id'];?>
+/"><?php echo $_smarty_tpl->tpl_vars['itemChild']->value['name'];?>
 </a><br> 
                     <?php } ?>
 	            <?php }?>
 	   <?php } ?>
-    </div>	
+    </div>
+    <div class="menuCaption">Корзина</div>
+    <a href="/cart/" title="Перейти в корзину">В корзине</a>
+    <span id="cartCntItems">
+        <?php if ($_smarty_tpl->tpl_vars['cartCntItems']->value){?><?php echo $_smarty_tpl->tpl_vars['cartCntItems']->value;?>
+<?php }else{ ?>пусто<?php }?>
+    </span>	
 </div>
 <?php }} ?>

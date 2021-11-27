@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2021-11-25 23:06:27
+<?php /* Smarty version Smarty-3.1.6, created on 2021-11-27 00:03:16
          compiled from "../views/default\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1283436313619e902cdf9e01-38537093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9797888b337e03f99b06385b60a372bbb52d5e02' => 
     array (
       0 => '../views/default\\header.tpl',
-      1 => 1637870785,
+      1 => 1637960594,
       2 => 'file',
     ),
   ),
@@ -30,11 +30,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </title>
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
 css/main.css" type="text/css" />
+		<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
 	</head>
 
 	<body>	
       <div id="header">
-		<h2>Интернет магазин</h2>
+		<h2><a href="/">Интернет магазин</a></h2>
    
       </div>
 

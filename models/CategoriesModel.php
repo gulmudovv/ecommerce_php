@@ -34,4 +34,17 @@ function getAllMainCatsWithChildren(){
 	return $smartyRs;
 }
 
+//Функция для выборки данных с таблицы categories по id
+
+function getCatById($catId){
+
+	$catId = intval($catId);
+
+	$sql = "SELECT * FROM categories WHERE id = '{$catId}'";
+	$link = $GLOBALS["db"];
+
+	$rs = mysqli_query($link, $sql);
+    
+	return mysqli_fetch_assoc($rs);
+}
 

@@ -29,4 +29,40 @@ function addtocartAction(){
     echo json_encode($resData);
 }
 
+// функция удаления элементов из корзины
+function removefromcartAction(){
+     $itemId = isset($_GET['id']) ? intval($_GET['id']) : null;
+    
+    if(!$itemId) exit();
 
+    $resData = [];
+    $key = array_search($itemId, $_SESSION['cart']);
+    
+    if($key !== false){
+        unset($_SESSION['cart'][$key]);
+        $resData['success'] = 1;
+        $resData['cntItems'] = count($_SESSION['cart']);
+    }else{
+        $resData['success'] =0;
+    }
+    
+    echo json_encode($resData);
+}
+
+//главная страницa корзины
+function indexAction($smarty){
+
+    $itemIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+
+    $rsCategories = getAllMainCatsWithChildren();
+    $rsProducts = getProductsFromArray($itemIds);
+
+    $smarty->assign('pageTitle', 'Корзина');
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsProducts', $rsProducts);
+    
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'cart');
+    loadTemplate($smarty, 'footer');
+}

@@ -38,3 +38,15 @@ function getProductById($itemId){
     
     return mysqli_fetch_assoc($rs);
 }
+
+//функция для выборки продуктов по id из БД по id товара в корзине
+function getProductsFromArray($itemIds){
+    
+    $strIds = implode($itemIds, ', ');
+	
+	$sql = "SELECT * FROM products WHERE id IN  ({$strIds})";
+	$link = $GLOBALS["db"];
+	$rs = mysqli_query($link, $sql);
+    
+    return createSmartyRsArray($rs);
+}

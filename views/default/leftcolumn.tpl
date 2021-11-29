@@ -16,6 +16,6 @@
     <div class="menuCaption">Корзина</div>
     <a href="/cart/" title="Перейти в корзину">В корзине</a>
     <span id="cartCntItems">
-        {if $cartCntItems}{$cartCntItems}{else}пусто{/if}
+        {if $cartCntItems}{$cartCntItems}{else}0{/if}
     </span>	
 </div>

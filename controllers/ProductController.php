@@ -14,6 +14,12 @@ function indexAction($smarty){
 	//получить данные продукта
 	$rsProduct = getProductById($itemId);
 	
+	// проверка элемента в корзине на наличие
+	$smarty->assign('itemInCart', 0);
+	if(in_array($itemId, $_SESSION['cart'])){
+		$smarty->assign('itemInCart', 1);
+	}
+	
 	//получить все категории
 	$rsCategories = getAllMainCatsWithChildren();
 

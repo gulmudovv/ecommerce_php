@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2021-12-01 00:49:20
+<?php /* Smarty version Smarty-3.1.6, created on 2021-12-03 12:24:28
          compiled from "../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:540578611619e902ce64194-23054530%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd86026e14cd6d235743b3882c7fc10799a2fe413' => 
     array (
       0 => '../views/default\\leftcolumn.tpl',
-      1 => 1638286129,
+      1 => 1638523466,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'rsCategories' => 0,
     'item' => 0,
     'itemChild' => 0,
+    'arUser' => 0,
     'cartCntItems' => 0,
   ),
   'has_nocache_code' => false,
@@ -54,9 +55,32 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
 	   <?php } ?>
     </div>
 
- <div id="registerBox">
+
+<?php if (isset($_smarty_tpl->tpl_vars['arUser']->value)){?>
+
+    <div id="userBox" >
+        <a href="/user/" id="userLink"><?php echo $_smarty_tpl->tpl_vars['arUser']->value['displayName'];?>
+</a><br>
+        <a href="/user/logout/" onclick="logout();">Выход</a>        
+    </div>
+<?php }else{ ?>
+    <div id="userBox" class="hideme">
+        <a href="#" id="userLink"></a><br>
+        <a href="/user/logout/" onclick="logout();">Выход</a>        
+    </div>
+
+
+
+    <div id="loginBox">
+        <div class="menuCaption">Авторизация</div>
+        <input type="text" id="loginEmail" name="loginEmail" value=""><br>
+        <input type="password" id="loginPwd" name="loginPwd" value=""><br>
+        <input type="button" onclick="login();" value="Log In">        
+    </div>
+
+ <div id="registerBox" >
     <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-    <div id="registerBoxHidden">
+    <div id="registerBoxHidden" class="hideme">
         email:<br>
         <input type="text" id="email" name="email" value=""><br>
         password:<br>
@@ -71,7 +95,7 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
      
  </div>
 
-
+<?php }?>
 
 
 

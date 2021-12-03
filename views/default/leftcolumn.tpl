@@ -14,9 +14,31 @@
 	   {/foreach}
     </div>
 
- <div id="registerBox">
+
+{if isset($arUser)}
+
+    <div id="userBox" >
+        <a href="/user/" id="userLink">{$arUser['displayName']}</a><br>
+        <a href="/user/logout/" onclick="logout();">Выход</a>        
+    </div>
+{else}
+    <div id="userBox" class="hideme">
+        <a href="#" id="userLink"></a><br>
+        <a href="/user/logout/" onclick="logout();">Выход</a>        
+    </div>
+
+
+
+    <div id="loginBox">
+        <div class="menuCaption">Авторизация</div>
+        <input type="text" id="loginEmail" name="loginEmail" value=""><br>
+        <input type="password" id="loginPwd" name="loginPwd" value=""><br>
+        <input type="button" onclick="login();" value="Log In">        
+    </div>
+
+ <div id="registerBox" >
     <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-    <div id="registerBoxHidden">
+    <div id="registerBoxHidden" class="hideme">
         email:<br>
         <input type="text" id="email" name="email" value=""><br>
         password:<br>
@@ -31,7 +53,7 @@
      
  </div>
 
-
+{/if}
 
 
 

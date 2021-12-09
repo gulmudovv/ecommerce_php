@@ -134,6 +134,12 @@ function login(){
 			$('#registerBox').hide();
 			$('#loginBox').hide();
 
+            $('#name').val(data['name']);
+            $('#phone').val(data['phone']);
+            $('#address').val(data['address']);
+
+			$('#btnSaveOrder').show();
+
 			$('#userLink').attr('href', '/user/');
 			$('#userLink').html(data['displayName']);
 			$('#userBox').show();		
@@ -163,7 +169,7 @@ function updateUserData(){
     	'pwd2': pwd2,
     	'curPwd': curPwd,
     };
-    console.log(postData);
+    
 	$.ajax({
 	type: 'POST',
 	async: true,
@@ -178,6 +184,27 @@ function updateUserData(){
 			alert(data['message']);
 		}
 
+}
+
+	});
+}
+
+//функция сохранения заказа 
+function saveOrder(){
+    var postData = getData('form');
+    $.ajax({
+	type: 'POST',
+	async: true,
+	url: "/cart/saveorder/",
+	data: postData,
+	dataType: 'json',
+	success: function(data){
+		if(data['success']){			
+		    alert(data['message']);
+		    document.location = '/'; 	
+		}else{
+			alert(data['message']);
+		}
 }
 
 	});

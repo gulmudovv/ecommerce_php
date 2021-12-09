@@ -6,6 +6,7 @@
 
 
 {else}
+<form action="/cart/order/" method="POST">
      <h2> Данные заказа </h2>
      <table>
 
@@ -38,11 +39,13 @@
      		</td>
 
      		<td>
-     			<a id="addCart_{$item['id']}" class="hideme" title="Востановить элемент"   onclick="addToCart({$item['id']}); return false;" href="#" alt="В корзину">Востановить</a>
+     			<a id="addCart_{$item['id']}" class="hideme" title="Востановить элемент"   onclick="addToCart({$item['id']}); return false;" href="#" alt="В корзину">Восстановить</a>
 	   <a id="removeCart_{$item['id']}"  title="Удалить из корзины" onclick="removeFromCart({$item['id']}); return false;" href="#" alt="Удалить из корзины">Удалить</a>
      		</td>
      		
      	</tr>
      	{/foreach}
-     </table> 
+     </table>
+     <input type="submit" value="Оформить заказ">
+     </form> 
 {/if}

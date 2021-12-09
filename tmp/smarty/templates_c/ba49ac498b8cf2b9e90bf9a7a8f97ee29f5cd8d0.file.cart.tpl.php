@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2021-11-27 14:34:39
+<?php /* Smarty version Smarty-3.1.6, created on 2021-12-05 16:08:44
          compiled from "../views/default\cart.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:189832751661a1fae973d8f3-87613593%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ba49ac498b8cf2b9e90bf9a7a8f97ee29f5cd8d0' => 
     array (
       0 => '../views/default\\cart.tpl',
-      1 => 1638012877,
+      1 => 1638709517,
       2 => 'file',
     ),
   ),
@@ -32,6 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 <?php }else{ ?>
+<form action="/cart/order/" method="POST">
      <h2> Данные заказа </h2>
      <table>
 
@@ -83,7 +84,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
      		<td>
      			<a id="addCart_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " class="hideme" title="Востановить элемент"   onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-); return false;" href="#" alt="В корзину">Востановить</a>
+); return false;" href="#" alt="В корзину">Восстановить</a>
 	   <a id="removeCart_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 "  title="Удалить из корзины" onclick="removeFromCart(<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 ); return false;" href="#" alt="Удалить из корзины">Удалить</a>
@@ -91,5 +92,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
      		
      	</tr>
      	<?php } ?>
-     </table> 
+     </table>
+     <input type="submit" value="Оформить заказ">
+     </form> 
 <?php }?><?php }} ?>

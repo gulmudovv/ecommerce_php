@@ -136,7 +136,7 @@ function orderAction($smarty){
 function saveorderAction(){
 
     $cart = isset($_SESSION['saleCart']) ? $_SESSION['saleCart'] : null;
-
+    
     if(!$cart){
         $resData['success'] = 0;
         $resData['message'] = 'Нет товара для заказа';
@@ -152,5 +152,24 @@ function saveorderAction(){
     // создаем новый заказ и получаем его ID
     $orderId = makeNewOrder($name, $phone, $address);
 
+    if(!$orderId){
+        $resData['success'] = 0;
+        $resData['message'] = 'Ошибка создания заказа!';
+        echo json_encode($resData);
+        return;
+    }
+    // сохраняем товары для созданного заказа
+    $res = setPurchaseForOrder($orderId, $cart);
 
+    if($res){
+        $resData['success'] = 1;
+        $resData['message'] = 'Заказ успешно оформлен!';
+        unset($_SESSION['saleCart']);
+        unset($_SESSION['cart']);
+    }else{
+        $resData['success'] = 0;
+        $resData['message'] = 'Ошибка внесения данных для заказа!' . $orderId;
+    }
+
+    echo json_encode($resData);
 }

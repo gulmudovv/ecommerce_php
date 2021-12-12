@@ -1,6 +1,6 @@
 <?php
 // Модель для работы с таблицей users
-
+include_once '../models/OrdersModel.php';
 //Функция регистрации нового пользователя
 function registerNewUser($email, $pwdMD5, $name, $phone, $address){
 
@@ -131,4 +131,14 @@ function updateUserData($name, $phone, $address, $pwd1, $pwd2, $curPwd){
     return $rs;
     
 
+}
+
+function getCurUserOrders(){
+
+    $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : 0;
+   
+
+    $rs = getOrdersWithProductsByUser($userId);
+ 
+    return $rs; 
 }

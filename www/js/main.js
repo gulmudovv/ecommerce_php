@@ -209,3 +209,18 @@ function saveOrder(){
 
 	});
 }
+
+function showProducts(id){
+	console.log(id);
+	var objName = "#purchaseForOrderId_" + id;
+    var textForShowProd = "#textForShowProducts_" +id;
+	if($(objName).css('display') != 'table-row'){
+		$(objName).show();
+		$(textForShowProd).html('Скрыть товар');
+	}else{
+		$(objName).hide();
+		$(textForShowProd).html('Показать товар');
+	}
+
+
+}

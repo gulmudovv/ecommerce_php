@@ -1,5 +1,5 @@
 <?php
-
+include_once '../models/PurchaseModel.php';
 // Модель для таблицы orders
 function makeNewOrder($name, $phone, $address){
    
@@ -38,4 +38,25 @@ function makeNewOrder($name, $phone, $address){
 	}
 
 return false;
+}
+
+
+function getOrdersWithProductsByUser($userId){
+
+   $link = $GLOBALS["db"];
+   $sql = "SELECT * FROM orders WHERE `user_id` = '{$userId}' ORDER BY id DESC";
+    
+   $rs = mysqli_query($link, $sql);
+   $smartyRs = [];	
+	while($row = mysqli_fetch_assoc($rs)){
+        $rsChildren = getPurchaseForOrder($row['id']);
+        if($rsChildren){
+        	$row['children'] = $rsChildren;
+		    $smartyRs[] = $row;
+		}
+	}
+	
+	//d($smartyRs);
+
+   return $smartyRs;
 }

@@ -6,6 +6,7 @@
 include_once '../models/CategoriesModel.php';
 include_once '../models/UsersModel.php';
 
+
 // AJAX регистрация пользователя
 function registerAction(){
 
@@ -97,11 +98,14 @@ function indexAction($smarty){
     //получить все категории
 	$rsCategories = getAllMainCatsWithChildren();
 
+    $rsUserOrders = getCurUserOrders();
 
+   
 
 
 	$smarty->assign('pageTitle', 'Личный кабинет');	
     $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
     
     
 
